@@ -1,40 +1,41 @@
 {
-  "name": "@zabalit/winston-rsyslog",
-  "version": "1.0.0",
-  "description": "An rSysLog transport for winston",
-  "author": "Fabio Grande <grnfba@gmail.com>",
-  "contributors": [
-    {
-      "name": "Fabio Grande",
-      "email": "grnfba@gmail.com"
+    "name": "@zabalit/winston-rsyslog",
+    "version": "0.0.0",
+    "description": "An rSysLog transport for winston",
+    "author": "Fabio Grande <grnfba@gmail.com>",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/zabalit/winston-rsyslog.git"
     },
-    {
-      "name": "Derek Brooks",
-      "email": "derek@broox.com"
+    "keywords": [
+        "logging",
+        "sysadmin",
+        "tools"
+    ],
+    "scripts": {
+        "build": "gulp gen-lib && rm -rf dist && tsc ",
+        "build-link": "gulp gen-lib && tsc",
+        "prepack": "npm run build",
+        "preversion": "git pull && git push && publish-please guard",
+        "postversion": "git push --tags && publish-please",
+        "prepublishOnly": "publish-please guard && npm run build",
+        "publish-please": "publish-please",
+        "test": "vows --spec"
+    },
+    "dependencies": {},
+    "peerDependencies": {
+        "winston": "^3.2.1"
+    },
+    "devDependencies": {
+        "vows": "0.8.x",
+        "@types/node": "13.7.0",
+        "@types/uuid": "^8.0.1",
+        "typescript": "^4.9.4",
+        "winston": "^3.2.1",
+        "yargs": "^12.0.2",
+        "gulp": "^4.0.2",
+        "gulp-insert": "^0.5.0"
     }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/zabalit/winston-rsyslog.git"
-  },
-  "keywords": [
-    "logging",
-    "sysadmin",
-    "tools"
-  ],
-  "dependencies": {},
-  "peerDependencies": {
-    "winston": "~2.2.0"
-  },
-  "devDependencies": {
-    "winston": "2.2.x",
-    "vows": "0.8.x"
-  },
-  "main": "./lib/winston-rsyslog",
-  "scripts": {
-    "test": "vows --spec"
-  },
-  "engines": {
-    "node": ">= 0.4.0"
-  }
 }

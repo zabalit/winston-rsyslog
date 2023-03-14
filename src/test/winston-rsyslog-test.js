@@ -18,9 +18,9 @@ var tokenTransport,
 
 try {
   config = require('./config');
-  
+
   console.log('Using configuration file test/config.json.');
-  
+
   tokenTransport = new (Rsyslog)({
     host: config.transports.rsyslog.host,
     port: config.transports.rsyslog.port,
