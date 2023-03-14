@@ -1,7 +1,11 @@
-node_modules
-test/
+node_modules/
 src/
 tsconfig.json
 tslint.json
 .idea
 .gitignore
+.npmignore
+.npmrc
+.nvmrc
+.publishrc
+gulpfile.js
