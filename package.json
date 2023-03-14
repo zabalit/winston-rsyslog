@@ -1,6 +1,6 @@
 {
     "name": "@zabalit/winston-rsyslog",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "An rSysLog transport for winston",
     "author": "Fabio Grande <grnfba@gmail.com>",
     "main": "dist/index.js",
