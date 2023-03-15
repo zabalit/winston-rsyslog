@@ -20,7 +20,7 @@
         "prepack": "npm run build",
         "preversion": "git pull && git push && publish-please guard",
         "postversion": "git push --tags && publish-please",
-        "prepublishOnly": "publish-please guard && npm run build",
+        "prepublishOnly": "publish-please guard",
         "publish-please": "publish-please",
         "test": "vows --spec"
     },

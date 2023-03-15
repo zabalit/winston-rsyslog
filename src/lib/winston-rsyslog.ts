@@ -4,6 +4,7 @@ import {NivelesLogRsyslog} from '../enums/niveles-log-rsyslog';
 import {NPM_TO_SYSLOG_LEVEL_MAP} from '../constantes/npm-syslog-level-map';
 import {OuptputFormat} from '../enums/output-format';
 import {Protocol} from '../enums/protocol';
+import {NivelesLog} from '../enums/niveles-log';
 
 const dgram = require('dgram');
 const net = require('net');
@@ -34,7 +35,6 @@ export class RsyslogTransport extends Transport {
         this.protocol = options.protocol || Protocol.UDP;
         this.hostname = options.hostname || os.hostname();
         this.tag = options.tag || 'winston';
-        this.level = options.level;
         this.silent = options.silent;
         this.outputformat = options.outputFormat || OuptputFormat.TEXT;
 
@@ -58,7 +58,7 @@ export class RsyslogTransport extends Transport {
             }
         }
 
-        const level: NivelesLogRsyslog = info.level;
+        const level: NivelesLog = info.level;
         const msg: string = info.message;
 
         const self = this;
@@ -81,7 +81,7 @@ export class RsyslogTransport extends Transport {
             _date = new Date().toISOString();
         }
 
-        const _buffer = this.createBuffer(_pri, _date, this.tag, nivelMap, msg, this.getMeta(info), this.outputformat);
+        const _buffer = this.createBuffer(_pri, _date, this.tag, level, msg, this.getMeta(info), this.outputformat);
 
         if (this.protocol === Protocol.UDP) {
             const client = dgram.createSocket('udp4');
@@ -149,7 +149,7 @@ export class RsyslogTransport extends Transport {
         return obj;
     }
 
-    private createBuffer(pri: number, date: string, tag: string, level: string, msg: string, meta: any, outputFormat: OuptputFormat): Buffer {
+    private createBuffer(pri: number, date: string, tag: string, level: NivelesLog, msg: string, meta: any, outputFormat: OuptputFormat): Buffer {
         let str = '<' + pri + '>' + date + ' ' + tag + ' ' + level +
             ' - ' + msg;
 
