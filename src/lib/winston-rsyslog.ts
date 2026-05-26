@@ -1,14 +1,13 @@
-import * as Transport from 'winston-transport';
-import {IOpcionesTransportRsyslog} from '../interfaces/opciones-transport-rsyslog';
-import {NivelesLogRsyslog} from '../enums/niveles-log-rsyslog';
-import {NPM_TO_SYSLOG_LEVEL_MAP} from '../constantes/npm-syslog-level-map';
-import {OuptputFormat} from '../enums/output-format';
-import {Protocol} from '../enums/protocol';
-import {NivelesLog} from '../enums/niveles-log';
-
-const dgram = require('dgram');
-const net = require('net');
-const os = require('os');
+import Transport from 'winston-transport';
+import {IOpcionesTransportRsyslog} from '../interfaces/opciones-transport-rsyslog.js';
+import {NivelesLogRsyslog} from '../enums/niveles-log-rsyslog.js';
+import {NPM_TO_SYSLOG_LEVEL_MAP} from '../constantes/npm-syslog-level-map.js';
+import {OuptputFormat} from '../enums/output-format.js';
+import {Protocol} from '../enums/protocol.js';
+import {NivelesLog} from '../enums/niveles-log.js';
+import dgram from 'dgram';
+import net from 'net';
+import os from 'os';
 
 const propNoMeta = ['level', 'message', 'timestamp'];
 
@@ -23,11 +22,9 @@ export class RsyslogTransport extends Transport {
     tag: string;
     outputformat: OuptputFormat;
 
-    silent?: boolean;
 
-    constructor(options: IOpcionesTransportRsyslog) {
+    constructor(options: Partial<IOpcionesTransportRsyslog> = {}) {
         super(options);
-        options = options || {};
         this.name = 'rsyslog';
         this.host = options.host || 'localhost';
         this.port = options.port || 514;

@@ -1,8 +1,7 @@
-const gulp = require('gulp');
-const insert  = require('gulp-insert');
-const fs = require('fs');
-const glob = require('glob');
-
+import gulp from 'gulp';
+import glob from 'glob';
+import insert from 'gulp-insert';
+import fs from 'fs';
 
 const RUTA_SOURCE = './src/';
 const FICHERO_LIB = 'index.ts';
@@ -16,7 +15,7 @@ gulp.task('gen-lib', () => {
                     var filename = file.split('.').slice(0, -1).join('.');
                     filename = filename.replace(RUTA_SOURCE, './');
                     if (filename !== 'index') {
-                        content += 'export * from \'' + filename + '\';\n';
+                        content += 'export * from \'' + filename + '.js\';\n';
                     }
                 });
                 resolve(gulp.src(RUTA_SOURCE + FICHERO_LIB)

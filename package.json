@@ -1,6 +1,7 @@
 {
     "name": "@zabalit/winston-rsyslog",
     "version": "1.1.0",
+    "type": "module",
     "description": "An rSysLog transport for winston",
     "author": "Fabio Grande <grnfba@gmail.com>",
     "main": "dist/index.js",
@@ -26,14 +27,13 @@
     },
     "dependencies": {},
     "peerDependencies": {
-        "winston": "^3.2.1"
+        "winston": "^3.19.0"
     },
     "devDependencies": {
         "vows": "0.8.x",
-        "@types/node": "13.7.0",
-        "@types/uuid": "^8.0.1",
-        "typescript": "^4.9.4",
-        "winston": "^3.2.1",
+        "@types/node": "22.13.14",
+        "typescript": "^5.9.3",
+        "winston": "^3.19.0",
         "yargs": "^12.0.2",
         "gulp": "^4.0.2",
         "gulp-insert": "^0.5.0",
